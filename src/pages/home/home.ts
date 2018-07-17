@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera'
+import { normalizeURL } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -28,7 +29,7 @@ export class HomePage {
 
     this.camera.getPicture(options).then(imagePath => {
       console.log(imagePath)
-      this.picture = imagePath
+      this.picture = normalizeURL(imagePath);
     }, err => {
       this.error = 'Error selecting the image'
     })
